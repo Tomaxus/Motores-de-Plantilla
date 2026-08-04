@@ -61,7 +61,7 @@ Motores-de-Plantilla/
 ### Motores de plantilla
 
 - Django Templates
-- EJS / Handlebars / Pug *(según la implementación de Express)*
+- EJS / Pug *(según la implementación de Express)*
 - Thymeleaf
 
 ---
