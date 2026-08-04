@@ -1,0 +1,69 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Mi perfil personal
+    link(rel="icon", type="image/png", href="/assets/image.png")
+    link(rel="stylesheet", href="/style/style.css")
+
+  body
+    header.header
+      img.profile-img(src="/assets/image.png", alt="Foto de Tomás")
+      h1 HOLA, SOY #{nombre}
+      p Estudiante de Desarrollo de Aplicaciones Web
+
+      ul.profile-list(aria-label="Resumen del perfil")
+        li Linux
+        li Seguridad informática
+        li Desarrollo web
+
+    nav.nav(aria-label="Secciones principales")
+      ul.nav-list
+        li.nav-item
+          a.nav-link.active(href="#sobre-mi", data-target="sobre-mi") Sobre mí
+        li.nav-item
+          a.nav-link(href="#intereses", data-target="intereses") Intereses
+        li.nav-item
+          a.nav-link(href="#objetivos", data-target="objetivos") Objetivos
+
+    main
+      section#sobre-mi.content-section.active
+        h2 Sobre mí
+        ul.content-list
+          each item in sobre_mi
+            li.content-item= item
+
+      section#intereses.content-section
+        h2 Intereses
+        ul.content-list
+          each item in intereses
+            li.content-item= item
+
+      section#objetivos.content-section
+        h2 Objetivos
+        ul.content-list
+          each item in objetivos
+            li.content-item= item
+
+    footer.footer
+      ul.footer-list(aria-label="Información del pie de página")
+        li © 2026 Mi página personal
+
+    script.
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.content-section');
+
+      navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+          event.preventDefault();
+
+          const targetId = link.dataset.target;
+
+          navLinks.forEach((item) => item.classList.remove('active'));
+          sections.forEach((section) => section.classList.remove('active'));
+
+          link.classList.add('active');
+          document.getElementById(targetId).classList.add('active');
+        });
+      });

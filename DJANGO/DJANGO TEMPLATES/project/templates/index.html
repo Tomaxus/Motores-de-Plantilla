@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Mi perfil personal</title>
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+	<header class="header">
+		<h1>HOLA, SOY {{ nombre }}</h1>
+		<p>Estudiante de Desarrollo de Aplicaciones Web</p>
+
+		<ul class="profile-list" aria-label="Resumen del perfil">
+			<li>Linux</li>
+			<li>Seguridad informática</li>
+			<li>Desarrollo web</li>
+		</ul>
+	</header>
+
+	<nav class="nav" aria-label="Secciones principales">
+		<ul class="nav-list">
+			<li class="nav-item">
+				<a href="#sobre-mi" class="nav-link active" data-target="sobre-mi">Sobre mí</a>
+			</li>
+			<li class="nav-item">
+				<a href="#intereses" class="nav-link" data-target="intereses">Intereses</a>
+			</li>
+			<li class="nav-item">
+				<a href="#objetivos" class="nav-link" data-target="objetivos">Objetivos</a>
+			</li>
+		</ul>
+	</nav>
+
+	<main>
+		<section id="sobre-mi" class="content-section active">
+			<h2>Sobre mí</h2>
+			<ul class="content-list">
+				{% for item in sobre_mi %}
+				<li class="content-item">{{ item }}</li>
+				{% endfor %}
+			</ul>
+		</section>
+
+		<section id="intereses" class="content-section">
+			<h2>Intereses</h2>
+			<ul class="content-list">
+				{% for item in intereses %}
+				<li class="content-item">{{ item }}</li>
+				{% endfor %}
+			</ul>
+		</section>
+
+		<section id="objetivos" class="content-section">
+			<h2>Objetivos</h2>
+			<ul class="content-list">
+				{% for item in objetivos %}
+				<li class="content-item">{{ item }}</li>
+				{% endfor %}
+			</ul>
+		</section>
+	</main>
+
+	<footer class="footer">
+		<ul class="footer-list" aria-label="Información del pie de página">
+			<li>© 2026 Mi página personal</li>
+		</ul>
+	</footer>
+
+	<script>
+		const navLinks = document.querySelectorAll('.nav-link');
+		const sections = document.querySelectorAll('.content-section');
+
+		navLinks.forEach((link) => {
+			link.addEventListener('click', (event) => {
+				event.preventDefault();
+
+				const targetId = link.dataset.target;
+
+				navLinks.forEach((item) => item.classList.remove('active'));
+				sections.forEach((section) => section.classList.remove('active'));
+
+				link.classList.add('active');
+				document.getElementById(targetId).classList.add('active');
+			});
+		});
+	</script>
+</body>
+</html>
