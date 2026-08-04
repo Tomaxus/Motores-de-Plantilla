@@ -25,7 +25,7 @@ Motores-de-Plantilla/
 │   └── Proyecto utilizando Django Templates
 │
 ├── EXPRESS/
-│   └── Proyecto utilizando Express.js y su motor de plantillas
+│   └── Proyecto utilizando Express.js uno con ejs y otro con pug
 │
 └── SPRING BOOT/
     └── Proyecto utilizando Spring Boot y Thymeleaf
